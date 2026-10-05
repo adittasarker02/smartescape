@@ -1,0 +1,54 @@
+:root{--bg:#eef1ee;--panel:#fbfcfa;--ink:#14212b;--mute:#5b6b75;--line:#c9d2cc;--room:#2b5d8a;--junc:#fff;--exit:#0e8a4f;--bad:#c62f2f;--route:#f0a000;--rad:10px}
+@media (prefers-color-scheme:dark){:root{--bg:#10171c;--panel:#18222a;--ink:#e8eef0;--mute:#9db0ba;--line:#33444f;--junc:#18222a;--room:#6aa7da;--exit:#3ccf86;--bad:#ff6b6b;--route:#ffc233}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI","Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:1.5rem;letter-spacing:-.01em}header p{margin:0;color:var(--mute)}
+h2{margin:0 0 12px;font-size:1.05rem}
+main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;padding:16px 20px;max-width:1280px;margin:auto}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.plan,aside{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);padding:12px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.sep{flex:1}
+button,.btn{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;transition:background .15s,border-color .15s}
+button:hover,.btn:hover{border-color:var(--ink)}
+button:focus-visible,.btn:focus-within,select:focus-visible,.node:focus-visible{outline:3px solid var(--route);outline-offset:2px}
+.file input{position:absolute;opacity:0;width:1px;height:1px}
+.seg{display:flex}.seg button{border-radius:0}.seg button:first-child{border-radius:8px 0 0 8px}.seg button:last-child{border-radius:0 8px 8px 0;margin-left:-1px}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.err{background:color-mix(in srgb,var(--bad) 14%,transparent);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;margin-bottom:10px}
+#map{width:100%;height:auto;max-height:68vh;display:block;background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/40px 40px;border-radius:8px;opacity:.999}
+.legend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0;padding:0;color:var(--mute);font-size:.85rem}
+.legend li{display:flex;align-items:center;gap:6px}
+.field{display:grid;gap:4px;margin-bottom:12px}.field span{color:var(--mute);font-size:.85rem}
+select{font:inherit;padding:6px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.status{border-left:5px solid var(--line);padding:8px 12px;border-radius:4px;background:var(--bg);transition:border-color .2s}
+.status.ok{border-color:var(--route)}.status.bad{border-color:var(--bad)}
+.status strong{display:block;font-size:1.05rem}
+.status .seq{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.chip{background:var(--ink);color:var(--bg);border-radius:6px;padding:0 8px;font-weight:600}
+.help,.note{color:var(--mute);font-size:.85rem}
+/* map elements */
+.edge .line{stroke:var(--mute);stroke-width:3;transition:stroke .2s,stroke-width .2s}
+.edge .hit{stroke:transparent;stroke-width:22}
+.edge.blocked .line{stroke:var(--bad);stroke-dasharray:3 8;stroke-linecap:round;stroke-width:4}
+.edge.route .line{stroke:var(--route);stroke-width:8;stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw .5s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.edge text{font-size:13px;font-weight:700;fill:var(--ink);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.edge rect{fill:var(--panel);stroke:var(--line);rx:5}
+.edge.blocked rect{stroke:var(--bad)}
+.edge{cursor:default}.m-haz .edge,.m-haz .node{cursor:pointer}.m-start .node.sel-ok{cursor:pointer}
+.node .shape{fill:var(--junc);stroke:var(--ink);stroke-width:3;transition:fill .2s,stroke .2s,transform .2s;transform-box:fill-box;transform-origin:center}
+.node.room .shape{fill:var(--room)}.node.exit .shape{fill:var(--exit)}
+.node:hover .shape{transform:scale(1.1)}
+.node.blocked .shape{stroke:var(--bad);fill:color-mix(in srgb,var(--bad) 30%,var(--panel))}
+.node.closed .shape{stroke:var(--bad);fill:var(--mute);stroke-dasharray:5 4}
+.node.onroute .shape{stroke:var(--route);stroke-width:5}
+.node.isstart .shape{stroke:var(--route);stroke-width:6;animation:pop .3s}
+@keyframes pop{50%{transform:scale(1.25)}}
+.node .glyph{font-size:20px;font-weight:900;fill:var(--bad);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.node .lbl{font-size:13px;font-weight:600;fill:var(--ink);text-anchor:middle;paint-order:stroke;stroke:var(--panel);stroke-width:4px;pointer-events:none}
+.node .tag{font-size:11px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.edge.route .line{stroke-dashoffset:0}}
+.node:focus{outline:none}.node:focus-visible .shape{stroke-width:6;stroke:var(--route)}

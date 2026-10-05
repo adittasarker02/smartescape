@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Escape</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1 data-i="title"></h1>
+    <p data-i="sub"></p>
+  </div>
+  <button id="lang" type="button" aria-label="Language"></button>
+</header>
+<main>
+  <section class="plan" aria-label="Map">
+    <div class="toolbar">
+      <label class="btn file"><span data-i="importB"></span><input id="file" type="file" accept=".json,application/json"></label>
+      <button id="sample" type="button" data-i="sampleB"></button>
+      <span class="sep"></span>
+      <div class="seg" role="group">
+        <button id="mStart" type="button" data-i="mStart" aria-pressed="true"></button>
+        <button id="mHaz" type="button" data-i="mHaz" aria-pressed="false"></button>
+      </div>
+      <button id="reset" type="button" data-i="resetB"></button>
+    </div>
+    <div id="err" class="err" role="alert" hidden></div>
+    <svg id="map" role="img" aria-label="Building map"></svg>
+    <ul class="legend" id="legend"></ul>
+  </section>
+  <aside>
+    <h2 id="bname"></h2>
+    <label class="field"><span data-i="startL"></span><select id="startSel"></select></label>
+    <div id="status" class="status" aria-live="polite"></div>
+    <p class="help" id="help"></p>
+    <p class="note" data-i="note"></p>
+  </aside>
+</main>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

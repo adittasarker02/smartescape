@@ -1,0 +1,12 @@
+{
+  "name": "smart-escape",
+  "version": "1.0.0",
+  "description": "Interactive evacuation route simulator (frontend only)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes http-server . -p 8000 -c-1 -o",
+    "dev": "npx --yes http-server . -p 8000 -c-1",
+    "test": "node test.js"
+  }
+}
