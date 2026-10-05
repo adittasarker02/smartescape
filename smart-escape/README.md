@@ -3,14 +3,12 @@
 > Educational simulation only. Not a certified real-world evacuation planning tool.
 
 ## 1. Identity
-- **Full name:** <YOUR FULL NAME>
-- **Registration number:** <YOUR REGISTRATION NUMBER>
-- **GitHub repository:** https://github.com/<your-username>/devfest-<registration-number>
-- **Final commit ID:** <paste at T+90>
+- **Full name:** Aditta Sarker
+- **Registration number:** 241-15-068
+
 
 ## 2. Live link
-**https://<your-username>.github.io/devfest-<registration-number>/**
-(Public HTTPS, no login or installation required; works in the latest Chrome.)
+
 
 ## 3. Running instructions
 Requirements: Node.js (LTS) only for the optional npm scripts. The app itself is plain HTML/CSS/JS with no build step and no dependencies.
