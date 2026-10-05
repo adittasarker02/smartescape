@@ -1,6 +1,6 @@
 # Smart Escape – Interactive Evacuation Route Simulator
 
-> Educational simulation only. Not a certified real-world evacuation planning tool.
+
 
 ## 1. Identity
 - **Full name:** Aditta Sarker
@@ -8,7 +8,7 @@
 
 
 ## 2. Live link
-
+-**varcel:**
 
 ## 3. Running instructions
 Requirements: Node.js (LTS) only for the optional npm scripts. The app itself is plain HTML/CSS/JS with no build step and no dependencies.
